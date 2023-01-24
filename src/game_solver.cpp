@@ -122,42 +122,13 @@ void getResults(vector<string>& res, vector <vector<int>> cards, vector <vector<
     }
 }
 
-int main() {
+void gameSolver(int cards[], vector <string>& result) {
     set <vector<int>> cardComb;
-    int num[4] = {10,3,9,6};
     vector <vector<char>> opComb;
     vector <vector<int>> cardCombVec;
-    vector <string> result;
-
-    permuteCards(num, 0, 3, cardComb);
-    for (auto i = cardComb.begin(); i != cardComb.end(); i++) {
-        for (int j = 0; j < 4; j++) {
-            cout << (*i)[j];
-        }
-        cout << endl;
-    }
-
+    
+    permuteCards(cards, 0, 3, cardComb);
     setToVector(cardComb, cardCombVec);
-    for (int i = 0; i < cardCombVec.size(); i++) {
-        for (int j = 0; j < 4; j++) {
-            cout << cardCombVec[i][j];
-        }
-        cout << endl;
-    }
-
     permuteOps(opComb);
-    for (int i = 0; i < opComb.size(); i++) {
-        for (int j = 0; j < 3; j++) {
-            cout << opComb[i][j];
-        }
-        cout << endl;
-    }
-
     getResults(result, cardCombVec, opComb);
-    for (int i = 0; i < result.size(); i++) {
-        cout << result[i] << endl;
-    }
-
-
-    return 0;
 }
