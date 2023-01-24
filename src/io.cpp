@@ -1,7 +1,48 @@
 #include <iostream>
+#include <random>
+#include <fstream>
 
 using namespace std;
 
+/* Procedure to generate 4 random cards and insert to cards array */
+void randomCards(int cards[]) {
+    random_device rd; 
+    mt19937 gen(rd()); 
+    uniform_int_distribution<> distr(1, 13); 
+
+    cout << "These are 4 cards chosen randomly! \n";
+    for(int i=0; i<4; i++) {
+        cards[i] = distr(gen);
+        if (i != 0) {
+            cout << " ";
+        }
+        if (cards[i] > 10 || cards[i] == 1) {
+            switch (cards[i])
+            {
+            case 11:
+                cout << "J";
+                break;
+            case 12:
+                cout << "Q";
+                break;
+            case 13:
+                cout << "K";
+                break;
+            case 1:
+                cout << "A";
+                break;
+            default:
+                break;
+            }
+        }
+        else {
+            cout << to_string(cards[i]);
+        }
+    }
+    cout << endl;
+}
+
+/* Procedure to get cards input from user and input into cards array */
 void readCards(int cards[]) {
     string input;
     bool isValid, isPrevOne, isNeedSpace;
@@ -76,10 +117,45 @@ void readCards(int cards[]) {
 
 }
 
+/* Procedure to print main menu */
+void mainMenu() {
+    cout << "============== MENU ==============\n";
+    cout << "1. Input your cards\n";
+    cout << "2. Randomly pick cards\n";
+    cout << "3. Exit\n";
+
+}
+
+/* Procedure to print splash screen */
+void splashScreen() {
+
+}
+
+/* Procedure to write results into file */
+void writeFile() {
+    string input, fileName;
+    bool isValid = false;
+
+    cout << "Enter file name: ";
+    cin >> input;
+    fileName = "../test/" + input + ".txt";
+
+    ofstream resultFile(fileName);
+    
+    resultFile << "Files can be tricky, but it is fun enough!";
+    resultFile.close();
+}
+
 int main() {
     int cards[4];
-    readCards(cards);
-    for (int i = 0; i < 4; i++) {
-        cout << cards[i] << endl;
-    }
+    int randCards[4];
+    // readCards(cards);
+    // for (int i = 0; i < 4; i++) {
+    //     cout << cards[i] << endl;
+    // }
+    // randomCards(randCards);
+    // for (int i = 0; i < 4; i++) {
+    //     cout << randCards[i] << endl;
+    // }
+    writeFile();
 }
