@@ -49,7 +49,7 @@ int main()
             }
             else
             {
-                cout << "There is no solution\n";
+                cout << "\nThere is no solution\n";
             }
 
             cout << "The execution time is " << execTime.count() << " microseconds.\n";
