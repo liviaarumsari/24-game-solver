@@ -20,6 +20,6 @@ void mainMenu();
 void splashScreen();
 
 /* Procedure to write results into file */
-void writeFile();
+void writeFile(vector<string> result, int cards[], int execTime);
 
 #endif
