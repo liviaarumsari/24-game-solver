@@ -1,0 +1,5 @@
+Cards: 1 8 5 13
+2 solutions found
+((5 * (13 - 8)) - 1)
+(((13 - 8) * 5) - 1)
+The execution time is 1777 microseconds
