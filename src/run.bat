@@ -1,0 +1,1 @@
+g++ -o ../bin/main.exe main.cpp game_solver.cpp io.cpp
