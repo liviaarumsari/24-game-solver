@@ -4,6 +4,14 @@
 
 using namespace std;
 
+/* Implementation of swap function */
+void swapValue(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+/* Function to permute 4 number of cards */
 void permuteCards(int num[], int l, int r, set <vector<int>>& cards)
 {
     if (l == r) {
@@ -15,14 +23,15 @@ void permuteCards(int num[], int l, int r, set <vector<int>>& cards)
     }
     else {
         for (int i = l; i <= r; i++) {
-            swap(num[l], num[i]);
+            swapValue(&num[l], &num[i]);
             permuteCards(num, l + 1, r, cards);
             // backtrack
-            swap(num[l], num[i]);
+            swapValue(&num[l], &num[i]);
         }
     }
 }
 
+/* Function to make all the combination of the operator */
 void permuteOps(vector <vector<char>>& res) {
     char ops[4] = {'+', '-', '*', '/'};
 
@@ -40,6 +49,7 @@ void permuteOps(vector <vector<char>>& res) {
     
 }
 
+/* Function to transform set to vector */
 void setToVector (set <vector<int>> cards, vector <vector<int>>& res) {
     for (auto i = cards.begin(); i != cards.end(); i++) {
         vector <int> card;
@@ -50,6 +60,7 @@ void setToVector (set <vector<int>> cards, vector <vector<int>>& res) {
     }
 }
 
+/* Function to compute based on the operator */
 double evaluate(double a, double b, char ops) {
     switch (ops)
     {
@@ -64,6 +75,7 @@ double evaluate(double a, double b, char ops) {
     }
 }
 
+/* Function to get all correct expression that results in 24 */
 void getResults(vector<string>& res, vector <vector<int>> cards, vector <vector<char>> ops) {
     for (int i = 0; i < cards.size(); i++) {
         for (int j = 0; j < ops.size(); j++) {
@@ -110,26 +122,10 @@ void getResults(vector<string>& res, vector <vector<int>> cards, vector <vector<
     }
 }
 
-bool isValidPostfix(char pattern[]) {
-    int ctr = 0;
-    for (int i = 0; i < 7; i++) {
-        if (pattern[i] == 'a') {
-            ctr = ctr - 2;
-        }
-        if (ctr < 0) {
-            return false;
-        }
-        ctr++;
-    }
-    return ctr == 1;
-}
-
-
 int main() {
     set <vector<int>> cardComb;
-    int num[4] = {6,6,6,6};
+    int num[4] = {10,3,9,6};
     vector <vector<char>> opComb;
-    char opCombination[100][3];
     vector <vector<int>> cardCombVec;
     vector <string> result;
 
